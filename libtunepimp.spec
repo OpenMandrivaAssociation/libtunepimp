@@ -7,11 +7,11 @@
 %define distsuffix plf
 %endif
 
-Name:	libtunepimp
+Name:		libtunepimp
 Version:	0.5.3
-Release:	%mkrel 2
-Epoch: 1
-Summary: A library for creating MusicBrainz enabled tagging applications
+Release:	%mkrel 3
+Epoch:		1
+Summary:	A library for creating MusicBrainz enabled tagging applications
 Source0:	ftp://ftp.musicbrainz.org/pub/musicbrainz/%{name}-%{version}.tar.bz2
 License:	LGPL
 Group:		System/Libraries
@@ -44,10 +44,10 @@ This package is in PLF as it may violate some MP4 patents.
 #-----------------------------------------------------------
 
 %package -n	tunepimp-utils
-Summary:        A library for creating MusicBrainz enabled tagging applications
-Group:          Sound
-Obsoletes: %{_lib}tunepimp2-utils
-Obsoletes: %{_lib}tunepimp5-utils
+Summary:	A library for creating MusicBrainz enabled tagging applications
+Group:		Sound
+Obsoletes:	%{_lib}tunepimp2-utils
+Obsoletes:	%{_lib}tunepimp5-utils
 
 %description -n tunepimp-utils
 This package contains %{name} tools
@@ -60,10 +60,10 @@ This package contains %{name} tools
 #-----------------------------------------------------------
 
 %package -n	tunepimp-plugins
-Summary: A library for creating MusicBrainz enabled tagging applications
-Group: Sound
-Obsoletes: %{_lib}tunepimp2-plugins
-Obsoletes: %{_lib}tunepimp5-plugins
+Summary:	A library for creating MusicBrainz enabled tagging applications
+Group:		Sound
+Obsoletes:	%{_lib}tunepimp2-plugins
+Obsoletes:	%{_lib}tunepimp5-plugins
 
 %description -n tunepimp-plugins
 This package contains %{name} plugins
@@ -88,16 +88,16 @@ This package contains %{name} plugins
 #-----------------------------------------------------------
 
 %package -n	%{libname}
-Summary:        A library for creating MusicBrainz enabled tagging applications
-Group:          System/Libraries
+Summary:	A library for creating MusicBrainz enabled tagging applications
+Group:		System/Libraries
 
 %description -n	%{libname}
 The TunePimp library (also referred to as libtunepimp) is
 a development library geared towards developers who wish
 to create MusicBrainz enabled tagging applications.
 
-%post -p /sbin/ldconfig -n %{libname}
-%postun -p /sbin/ldconfig -n %{libname}
+%post -n %{libname} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{libname}
 %defattr(-,root,root)
@@ -110,8 +110,8 @@ Summary:	Files needed for developing applications which use litunepimp
 Group:		Development/C
 Provides:	%{name}-devel = %{epoch}:%{version}-%{release}
 Requires:	%{libname} = %{epoch}:%{version}-%{release}
-Obsoletes: %{_lib}tunepimp2-devel
-Obsoletes: %{_lib}tunepimp3-devel
+Obsoletes:	%{_lib}tunepimp2-devel
+Obsoletes:	%{_lib}tunepimp3-devel
 
 %description -n	%{libname}-devel
 The %{name}-devel package includes the header files and .so libraries
@@ -130,10 +130,10 @@ to have the %name package installed.
 #-----------------------------------------------------------
 
 %package -n	%{libname}-static-devel
-Summary:        Static libraries for libtunepimp
-Group:          Development/C
-Provides:       %{name}-static-devel = %{version}-%{release}
-Requires:       %{libname}-devel = %{epoch}:%{version}-%{release}
+Summary:	Static libraries for libtunepimp
+Group:		Development/C
+Provides:	%{name}-static-devel = %{version}-%{release}
+Requires:	%{libname}-devel = %{epoch}:%{version}-%{release}
 
 %description -n	%{libname}-static-devel
 The %{name}-devel package includes the static libraries
@@ -171,15 +171,10 @@ Python binding to use libtunepimp.
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 %makeinstall_std
 cd python
-python setup.py install --root=$RPM_BUILD_ROOT
+python setup.py install --root=%{buildroot}
 
 %clean
 rm -rf %buildroot
-
-
-
-
-

@@ -10,7 +10,7 @@
 
 Name: libtunepimp
 Version: 0.5.3
-Release: %mkrel 4
+Release: %mkrel 5
 Epoch: 1
 Summary: A library for creating MusicBrainz enabled tagging applications
 Source0: ftp://ftp.musicbrainz.org/pub/musicbrainz/%{name}-%{version}.tar.bz2
@@ -40,7 +40,6 @@ to create MusicBrainz enabled tagging applications.
 %if %build_plf
 This package is in PLF as it may violate some MP4 patents.
 %endif
-
 
 #-----------------------------------------------------------
 
@@ -158,8 +157,14 @@ Python binding to use libtunepimp.
 %install
 rm -rf %{buildroot}
 %makeinstall_std
+
 cd python
 python setup.py install --root=%{buildroot}
+
+# Create symlink for current version includes
+cd %buildroot%_includedir
+ln -sf tunepimp-0.%major tunepimp
+
 
 %clean
 rm -rf %buildroot

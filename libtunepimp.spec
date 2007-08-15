@@ -1,5 +1,6 @@
 %define major	5
 %define libname	%mklibname tunepimp %major
+%define libdev	%mklibname tunepimp -d
 
 %define build_plf 0
 %{?_with_plf: %{expand: %%global build_plf 1}}
@@ -7,29 +8,29 @@
 %define distsuffix plf
 %endif
 
-Name:		libtunepimp
-Version:	0.5.3
-Release:	%mkrel 3
-Epoch:		1
-Summary:	A library for creating MusicBrainz enabled tagging applications
-Source0:	ftp://ftp.musicbrainz.org/pub/musicbrainz/%{name}-%{version}.tar.bz2
-License:	LGPL
-Group:		System/Libraries
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-Url:		http://musicbrainz.org/doc/libtunepimp
-BuildRequires:	libflac-devel
-BuildRequires:	readline-devel
-BuildRequires:	libmad-devel
-BuildRequires:	oggvorbis-devel
-BuildRequires:	libmusicbrainz-devel
-BuildRequires:	libcurl-devel
-BuildRequires:	libofa-devel
-BuildRequires:	taglib-devel
-BuildRequires:	libmpcdec-devel
-BuildRequires:	python-devel
+Name: libtunepimp
+Version: 0.5.3
+Release: %mkrel 4
+Epoch: 1
+Summary: A library for creating MusicBrainz enabled tagging applications
+Source0: ftp://ftp.musicbrainz.org/pub/musicbrainz/%{name}-%{version}.tar.bz2
+License: LGPL
+Group: System/Libraries
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
+Url: http://musicbrainz.org/doc/libtunepimp
+BuildRequires: libflac-devel
+BuildRequires: readline-devel
+BuildRequires: libmad-devel
+BuildRequires: oggvorbis-devel
+BuildRequires: libmusicbrainz-devel
+BuildRequires: libcurl-devel
+BuildRequires: libofa-devel
+BuildRequires: taglib-devel
+BuildRequires: libmpcdec-devel
 %if %build_plf
-BuildRequires:	libmp4v2-devel
+BuildRequires: libmp4v2-devel
 %endif
+%py_requires -d
 
 %description
 The TunePimp library (also referred to as libtunepimp) is
@@ -105,15 +106,16 @@ to create MusicBrainz enabled tagging applications.
 
 #-----------------------------------------------------------
 
-%package -n	%{libname}-devel
+%package -n	%libdev
 Summary:	Files needed for developing applications which use litunepimp
 Group:		Development/C
 Provides:	%{name}-devel = %{epoch}:%{version}-%{release}
-Requires:	%{libname} = %{epoch}:%{version}-%{release}
+Requires:	%{libname}
 Obsoletes:	%{_lib}tunepimp2-devel
 Obsoletes:	%{_lib}tunepimp3-devel
+Obsoletes:	%{_lib}tunepimp5-devel
 
-%description -n	%{libname}-devel
+%description -n	%libdev
 The %{name}-devel package includes the header files and .so libraries
 necessary for developing MusicBrainz enabled tagging applications.
 
@@ -121,32 +123,13 @@ If you are going to develop MusicBrainz enabled tagging
 applications you should install %{name}-devel. You'll also need 
 to have the %name package installed.
 
-%files -n %{libname}-devel
+%files -n %libdev
 %defattr(-,root,root)
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/*.la
 
 #-----------------------------------------------------------
-
-%package -n	%{libname}-static-devel
-Summary:	Static libraries for libtunepimp
-Group:		Development/C
-Provides:	%{name}-static-devel = %{version}-%{release}
-Requires:	%{libname}-devel = %{epoch}:%{version}-%{release}
-
-%description -n	%{libname}-static-devel
-The %{name}-devel package includes the static libraries
-necessary for developing MusicBrainz enabled tagging
-applications using the %{name} library.
-
-If you are going to develop MusicBrainz enabled tagging applications,
-you should install %{name}-devel.  You'll also need to have the %name
-package installed.
-
-%files -n %{libname}-static-devel
-%defattr(-,root,root)
-%{_libdir}/*.a
 
 %package -n	python-tunepimp
 Summary:	Python binding to use libtunepimp
@@ -167,7 +150,9 @@ Python binding to use libtunepimp.
 %setup -q
 
 %build
-%configure2_5x
+%configure2_5x \
+    --disable-static
+
 %make
 
 %install

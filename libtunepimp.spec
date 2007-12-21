@@ -16,6 +16,7 @@ Summary: A library for creating MusicBrainz enabled tagging applications
 Source0: ftp://ftp.musicbrainz.org/pub/musicbrainz/%{name}-%{version}.tar.bz2
 License: LGPL
 Group: System/Libraries
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Url: http://musicbrainz.org/doc/libtunepimp
 BuildRequires: libflac-devel
 BuildRequires: readline-devel

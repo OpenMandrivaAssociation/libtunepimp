@@ -10,7 +10,7 @@
 
 Name: libtunepimp
 Version: 0.5.3
-Release: %mkrel 5
+Release: %mkrel 6
 Epoch: 1
 Summary: A library for creating MusicBrainz enabled tagging applications
 Source0: ftp://ftp.musicbrainz.org/pub/musicbrainz/%{name}-%{version}.tar.bz2

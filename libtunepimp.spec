@@ -2,15 +2,9 @@
 %define libname	%mklibname tunepimp %major
 %define libdev	%mklibname tunepimp -d
 
-%define build_plf 0
-%{?_with_plf: %{expand: %%global build_plf 1}}
-%if %build_plf
-%define distsuffix plf
-%endif
-
 Name: libtunepimp
 Version: 0.5.3
-Release: %mkrel 6
+Release: %mkrel 7
 Epoch: 1
 Summary: A library for creating MusicBrainz enabled tagging applications
 Source0: ftp://ftp.musicbrainz.org/pub/musicbrainz/%{name}-%{version}.tar.bz2
@@ -27,19 +21,13 @@ BuildRequires: libcurl-devel
 BuildRequires: libofa-devel
 BuildRequires: taglib-devel
 BuildRequires: libmpcdec-devel
-%if %build_plf
 BuildRequires: libmp4v2-devel
-%endif
 %py_requires -d
 
 %description
 The TunePimp library (also referred to as libtunepimp) is
 a development library geared towards developers who wish
 to create MusicBrainz enabled tagging applications. 
-
-%if %build_plf
-This package is in PLF as it may violate some MP4 patents.
-%endif
 
 #-----------------------------------------------------------
 
@@ -81,9 +69,7 @@ This package contains %{name} plugins
 %{_libdir}/tunepimp/plugins/wav.tpp
 %{_libdir}/tunepimp/plugins/wma.tpp
 %{_libdir}/tunepimp/plugins/wv.tpp
-%if %build_plf
 %{_libdir}/tunepimp/plugins/mp4.tpp
-%endif
 
 #-----------------------------------------------------------
 

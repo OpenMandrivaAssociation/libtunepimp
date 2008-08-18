@@ -8,6 +8,9 @@ Release: %mkrel 8
 Epoch: 1
 Summary: A library for creating MusicBrainz enabled tagging applications
 Source0: ftp://ftp.musicbrainz.org/pub/musicbrainz/%{name}-%{version}.tar.bz2
+Patch0:	tunepimp-0.5.3-build-fix.patch
+Patch1:	tunepimp-0.5.3-gcc43.patch
+Patch2:	tunepimp-0.5.3-libtool.patch
 License: LGPL
 Group: System/Libraries
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -137,8 +140,14 @@ Python binding to use libtunepimp.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1
+%patch2 -p1
 
 %build
+
+libtoolize --copy --force
+
 %configure2_5x \
     --disable-static
 

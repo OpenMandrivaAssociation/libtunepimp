@@ -4,7 +4,7 @@
 
 Name: libtunepimp
 Version: 0.5.3
-Release: %mkrel 8
+Release: %mkrel 9
 Epoch: 1
 Summary: A library for creating MusicBrainz enabled tagging applications
 Source0: ftp://ftp.musicbrainz.org/pub/musicbrainz/%{name}-%{version}.tar.bz2
@@ -25,7 +25,7 @@ BuildRequires: libofa-devel
 BuildRequires: taglib-devel
 BuildRequires: libmpcdec-devel
 BuildRequires: libmp4v2-devel
-%py_requires -d
+BuildRequires: python-devel
 
 %description
 The TunePimp library (also referred to as libtunepimp) is
@@ -128,6 +128,7 @@ Summary:	Python binding to use libtunepimp
 Group:		Development/Python
 Requires:	python-ctypes
 Requires:	%libname = %epoch:%version
+%py_requires -d
 
 %description -n python-tunepimp
 Python binding to use libtunepimp.

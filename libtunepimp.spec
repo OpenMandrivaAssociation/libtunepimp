@@ -24,6 +24,7 @@ BuildRequires: libmusicbrainz-devel
 BuildRequires: libcurl-devel
 BuildRequires: libofa-devel
 BuildRequires: taglib-devel
+BuildRequires: libtool-devel
 BuildRequires: libmpcdec-devel
 BuildRequires: libmp4v2-devel >= 2.0
 BuildRequires: python-devel

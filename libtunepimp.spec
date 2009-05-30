@@ -148,10 +148,11 @@ Python binding to use libtunepimp.
 %patch3 -p1
 
 %build
-
-libtoolize --copy --force
-
+autoreconf -fi
 %configure2_5x \
+    --with-included-ltdl=no \
+    --with-ltdl-include=%_includedir \
+    --with-ltdl-lib=%_libdir \
     --disable-static
 
 %make

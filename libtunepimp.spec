@@ -13,6 +13,7 @@ Patch1:	tunepimp-0.5.3-gcc43.patch
 Patch2:	tunepimp-0.5.3-libtool.patch
 Patch3: libtunepimp-0.5.3-new-libmp4v2.patch
 Patch4:	libtunepimp-0.5.3-gcc44.patch
+Patch5: libtunepimp-0.5.3-curl-7.26.patch
 License: GPLv2+
 Group: System/Libraries
 Url: http://musicbrainz.org/doc/libtunepimp
@@ -21,7 +22,7 @@ BuildRequires: readline-devel
 BuildRequires: libmad-devel
 BuildRequires: oggvorbis-devel
 BuildRequires: libmusicbrainz-devel
-BuildRequires: libcurl-devel
+BuildRequires: pkgconfig(libcurl)
 BuildRequires: libofa-devel
 BuildRequires: taglib-devel
 BuildRequires: libtool-devel
@@ -74,7 +75,6 @@ This package contains %{name} plugins
 %{_libdir}/tunepimp/plugins/wav.tpp
 %{_libdir}/tunepimp/plugins/wma.tpp
 %{_libdir}/tunepimp/plugins/wv.tpp
-%{_libdir}/tunepimp/plugins/mp4.tpp
 
 #-----------------------------------------------------------
 
@@ -142,11 +142,12 @@ Python binding to use libtunepimp.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1
-%patch2 -p1
-%patch3 -p1 -b .mp4v2
-%patch4 -p1
+%apply_patches
+
+# Doesn't build and won't get fixed
+sed -i -e 's, mp4,,' plugins/Makefile.am
+sed -i -e 's,mp4v2,mp4v3,' configure.in
+
 autoreconf -fi
 
 %build

@@ -4,7 +4,7 @@
 
 Name: libtunepimp
 Version: 0.5.3
-Release: %mkrel 16
+Release: 17
 Epoch: 1
 Summary: A library for creating MusicBrainz enabled tagging applications
 Source0: ftp://ftp.musicbrainz.org/pub/musicbrainz/%{name}-%{version}.tar.bz2
@@ -15,7 +15,6 @@ Patch3: libtunepimp-0.5.3-new-libmp4v2.patch
 Patch4:	libtunepimp-0.5.3-gcc44.patch
 License: GPLv2+
 Group: System/Libraries
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Url: http://musicbrainz.org/doc/libtunepimp
 BuildRequires: libflac-devel
 BuildRequires: readline-devel
@@ -122,7 +121,6 @@ to have the %name package installed.
 %defattr(-,root,root)
 %{_includedir}/*
 %{_libdir}/*.so
-%{_libdir}/*.la
 
 #-----------------------------------------------------------
 
@@ -171,9 +169,7 @@ python setup.py install --root=%{buildroot}
 cd %buildroot%_includedir
 ln -sf tunepimp-0.%major tunepimp
 
-%if "%{_lib}" == "lib64"
-perl -pi -e "s|-L/usr/lib\b|-L%{_libdir}|g" %{buildroot}%{_libdir}/*.la
-%endif
+rm -f %buildroot%_libdir/*.la
 
 
 %clean

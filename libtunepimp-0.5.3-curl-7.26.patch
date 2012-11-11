@@ -1,0 +1,10 @@
+--- libtunepimp-0.5.3/lib/protocol.cpp.bero	2012-06-08 20:19:21.942938210 +0200
++++ libtunepimp-0.5.3/lib/protocol.cpp	2012-06-08 20:19:26.492938232 +0200
+@@ -13,7 +13,6 @@
+ #include <map>
+ #include <expat.h>
+ #include <curl/curl.h>
+-#include <curl/types.h>
+ #include <curl/easy.h>
+ using namespace std;
+ 

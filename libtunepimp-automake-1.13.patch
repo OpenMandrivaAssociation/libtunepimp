@@ -1,0 +1,25 @@
+--- libtunepimp-0.5.3/configure.in.bero	2013-01-16 00:45:10.528237865 +0100
++++ libtunepimp-0.5.3/configure.in	2013-01-16 00:45:25.733055471 +0100
+@@ -1,8 +1,8 @@
+ dnl Process this file with autoconf to produce a configure script.
+-AC_INIT(include/tunepimp-0.5/tunepimp.h)
+-AM_CONFIG_HEADER(config.h)
++AC_INIT(libtunepimp, 0.5.3)
++AC_CONFIG_HEADERS([config.h])
+ VERSION="0.5.3"
+-AM_INIT_AUTOMAKE(libtunepimp, "$VERSION")
++AM_INIT_AUTOMAKE
+ dnl AC_DEFINE_UNQUOTED(VERSION, "$VERSION")
+ 
+ CFLAGS="$CFLAGS -Wall -O2"
+--- libtunepimp-0.5.3/libltdl/configure.ac.bero	2013-01-16 00:46:15.205467687 +0100
++++ libtunepimp-0.5.3/libltdl/configure.ac	2013-01-16 00:46:20.090409358 +0100
+@@ -51,7 +51,7 @@ fi
+ ## Automake Initialisation. ##
+ ## ------------------------ ##
+ AM_INIT_AUTOMAKE(AC_PACKAGE_TARNAME, AC_PACKAGE_VERSION, -)
+-AM_CONFIG_HEADER([config.h:config-h.in])
++AC_CONFIG_HEADERS([config.h:config-h.in])
+ 
+ 
+ ## ------------------ ##

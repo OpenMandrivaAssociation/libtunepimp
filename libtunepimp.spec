@@ -18,13 +18,13 @@ Patch6: libtunepimp-automake-1.13.patch
 License: GPLv2+
 Group: System/Libraries
 Url: http://musicbrainz.org/doc/libtunepimp
-BuildRequires: libflac-devel
+BuildRequires: pkgconfig(flac)
 BuildRequires: readline-devel
-BuildRequires: libmad-devel
+BuildRequires: pkgconfig(mad)
 BuildRequires: oggvorbis-devel
-BuildRequires: libmusicbrainz-devel
+BuildRequires: pkgconfig(libmusicbrainz)
 BuildRequires: pkgconfig(libcurl)
-BuildRequires: libofa-devel
+BuildRequires: pkgconfig(libofa)
 BuildRequires: taglib-devel
 BuildRequires: libtool-devel
 BuildRequires: libmpcdec-devel

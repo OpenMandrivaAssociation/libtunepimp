@@ -103,7 +103,7 @@ Summary:	Python binding to use libtunepimp
 Group:		Development/Python
 Requires:	python-ctypes
 Requires:	%{libname} = %{EVRD}
-%py_requires -d
+BuildRequires:	python-devel
 
 %description -n python-tunepimp
 Python binding to use libtunepimp.

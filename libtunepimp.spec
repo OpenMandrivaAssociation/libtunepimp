@@ -28,7 +28,6 @@ BuildRequires:	pkgconfig(libmusicbrainz)
 BuildRequires:	pkgconfig(libcurl)
 BuildRequires:	pkgconfig(libofa)
 BuildRequires:	pkgconfig(mad)
-BuildRequires:	pkgconfig(python)
 BuildRequires:	pkgconfig(taglib)
 BuildRequires:	pkgconfig(vorbis)
 
@@ -103,7 +102,7 @@ Summary:	Python binding to use libtunepimp
 Group:		Development/Python
 Requires:	python-ctypes
 Requires:	%{libname} = %{EVRD}
-%py_requires -d
+BuildRequires:	pkgconfig(python)
 
 %description -n python-tunepimp
 Python binding to use libtunepimp.

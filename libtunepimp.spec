@@ -28,7 +28,7 @@ BuildRequires:	pkgconfig(libmusicbrainz)
 BuildRequires:	pkgconfig(libcurl)
 BuildRequires:	pkgconfig(libofa)
 BuildRequires:	pkgconfig(mad)
-BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(python2)
 BuildRequires:	pkgconfig(taglib)
 BuildRequires:	pkgconfig(vorbis)
 
@@ -109,7 +109,7 @@ BuildRequires:	python-devel
 Python binding to use libtunepimp.
 
 %files -n python-tunepimp
-%py_puresitedir/*
+%py2_puresitedir/*
 
 %prep
 %setup -q
@@ -122,7 +122,7 @@ sed -i -e 's,mp4v2,mp4v3,' configure.in
 autoreconf -fi
 
 %build
-%configure2_5x \
+%configure \
 	--with-included-ltdl=no \
 	--with-ltdl-include=%{_includedir} \
 	--with-ltdl-lib=%{_libdir} \
@@ -134,7 +134,7 @@ autoreconf -fi
 %makeinstall_std
 
 cd python
-python setup.py install --root=%{buildroot}
+%{__python2} setup.py install --root=%{buildroot}
 
 # Create symlink for current version includes
 cd %{buildroot}%{_includedir}

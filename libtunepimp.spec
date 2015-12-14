@@ -1,6 +1,7 @@
 %define major	5
 %define libname	%mklibname tunepimp %major
 %define devname	%mklibname tunepimp -d
+%define _disable_rebuild_configure 1
 
 Summary:	A library for creating MusicBrainz enabled tagging applications
 Name:		libtunepimp

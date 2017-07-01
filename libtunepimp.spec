@@ -7,7 +7,7 @@ Summary:	A library for creating MusicBrainz enabled tagging applications
 Name:		libtunepimp
 Epoch:		1
 Version:	0.5.3
-Release:	29
+Release:	30
 License:	GPLv2+
 Group:		System/Libraries
 Url:		http://musicbrainz.org/doc/libtunepimp
@@ -19,6 +19,7 @@ Patch3:		libtunepimp-0.5.3-new-libmp4v2.patch
 Patch4:		libtunepimp-0.5.3-gcc44.patch
 Patch5:		libtunepimp-0.5.3-curl-7.26.patch
 Patch6:		libtunepimp-automake-1.13.patch
+Patch7:		libtunepimp-0.5.3-taglib-detection.patch
 
 BuildRequires:	libmpcdec-devel
 BuildRequires:	libmp4v2-devel >= 2.0

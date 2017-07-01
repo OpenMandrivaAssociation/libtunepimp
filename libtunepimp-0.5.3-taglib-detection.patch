@@ -1,0 +1,31 @@
+--- libtunepimp-0.5.3/acinclude.m4.omv~	2017-07-01 16:37:45.676394228 +0200
++++ libtunepimp-0.5.3/acinclude.m4	2017-07-01 16:41:55.041489687 +0200
+@@ -22,9 +22,9 @@ AC_DEFUN([AC_CHECK_TAGLIB], [
+     echo "*** in your path, and that taglib is properly installed."
+     echo "*** Or see http://developer.kde.org/~wheeler/taglib.html"
+   else
+-    TAGLIB_VERSION=`$TAGLIB_CONFIG --version`
++    TAGLIB_VERSION=`$TAGLIB_CONFIG --version |cut -d. -f2`
+     AC_MSG_CHECKING(for taglib >= $1)
+-        VERSION_CHECK=`expr $TAGLIB_VERSION \>\= $1`
++        VERSION_CHECK=`expr $TAGLIB_VERSION \>\= $(echo $1 |cut -d. -f2)`
+         if test "$VERSION_CHECK" = "1" ; then
+             AC_MSG_RESULT(yes)
+             succeeded=yes
+@@ -37,6 +37,7 @@ AC_DEFUN([AC_CHECK_TAGLIB], [
+             TAGLIB_LIBS=`$TAGLIB_CONFIG --libs`
+             AC_MSG_RESULT($TAGLIB_LIBS)
+         else
++            AC_MSG_RESULT([version check failed])
+             TAGLIB_CFLAGS=""
+             TAGLIB_LIBS=""
+             ## If we have a custom action on failure, don't print errors, but
+--- libtunepimp-0.5.3/configure.in.omv~	2017-07-01 16:41:55.043489640 +0200
++++ libtunepimp-0.5.3/configure.in	2017-07-01 16:41:54.749496601 +0200
+@@ -1,5 +1,6 @@
+ dnl Process this file with autoconf to produce a configure script.
+ AC_INIT(libtunepimp, 0.5.3)
++LT_INIT
+ AC_CONFIG_HEADERS([config.h])
+ VERSION="0.5.3"
+ AM_INIT_AUTOMAKE

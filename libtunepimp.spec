@@ -115,7 +115,7 @@ Python binding to use libtunepimp.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 # Doesn't build and won't get fixed
 sed -i -e 's, mp4,,' plugins/Makefile.am

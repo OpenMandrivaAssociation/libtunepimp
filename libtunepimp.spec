@@ -7,7 +7,7 @@ Summary:	A library for creating MusicBrainz enabled tagging applications
 Name:		libtunepimp
 Epoch:		1
 Version:	0.5.3
-Release:	31
+Release:	32
 License:	GPLv2+
 Group:		System/Libraries
 Url:		http://musicbrainz.org/doc/libtunepimp

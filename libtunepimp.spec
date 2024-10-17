@@ -10,7 +10,7 @@ Version:	0.5.3
 Release:	32
 License:	GPLv2+
 Group:		System/Libraries
-Url:		http://musicbrainz.org/doc/libtunepimp
+Url:		https://musicbrainz.org/doc/libtunepimp
 Source0:	ftp://ftp.musicbrainz.org/pub/musicbrainz/%{name}-%{version}.tar.bz2
 Patch0:		tunepimp-0.5.3-build-fix.patch
 Patch1:		tunepimp-0.5.3-gcc43.patch
